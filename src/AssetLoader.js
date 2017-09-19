@@ -38,22 +38,22 @@ export default class AssetLoader extends Plugin {
   }
 
   loadAudio (key) {
-    const urls = []
+    let urls = []
     
     try {
-      urls.push(this.req(`./audio/${key}.mp3`))
+      urls = urls.concat(this.req(`./audio/${key}.mp3`))
     } catch (e) {}
-    
+
     try {
-      urls.push(this.req(`./audio/${key}.ogg`))
+      urls = urls.concat(this.req(`./audio/${key}.ogg`))
     } catch (e) {}
-    
+
     try {
-      urls.push(this.req(`./audio/${key}.m4a`))
+      urls = urls.concat(this.req(`./audio/${key}.m4a`))
     } catch (e) {}
-    
+
     try {
-      urls.push(this.req(`./audio/${key}.wav`))
+      urls = urls.concat(this.req(`./audio/${key}.wav`))
     } catch (e) {}
     
     if (urls.length === 0) {
